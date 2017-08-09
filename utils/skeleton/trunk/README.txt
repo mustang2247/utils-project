@@ -28,3 +28,7 @@ codec系统，提供一下amf3编解码    √
 写一个简单的客户端框架
 
 最后断开连接的时候，还会收到一个decodeLast的通知，需要处理
+
+
+github仓库生成:
+mvn deploy -DaltDeploymentRepository=mustang-mvn-repo::default::file:/Users/muskong/code/maven-repo2/repository/
