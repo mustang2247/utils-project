@@ -1,0 +1,61 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登录</title>
+<link type="text/css" rel="stylesheet" href="css/common.css"/>
+<link type="text/css" rel="stylesheet" href="css/hule.css"/>
+<style type="text/css">
+#codeShow {
+	font-family: Arial;
+	font-style: italic;
+	font-weight: bold;
+	border: 0;
+	letter-spacing: 2px;
+	color: blue;
+}
+</style>
+</head>
+<body>
+<div id="body" class="container"> 
+    <div class="registerbox">
+      <div class="reg_hd"> <a href="index.html" title=""><h2>登录</h2></a> </div>
+      <div class="reg_bd formbox">
+        <form class="formelem" data-action="/registermg/postform">
+          <ul>
+            <li>
+              <label class="label_title">用户名：</label>
+              <div class="inputbox">
+                <input type="text" name="username" id="username" data-type="username" data-errormsg="请填写正确的账号" data-defultmsg="仅支持账号注册" data-ajaxurl="/registermg/mobilemail" class="normalText display_u js_text_input phone">
+				<label id="usernameLabel" style="display:none"></label>
+                <input type="hidden" name="register_type">
+              </div>
+            </li>
+            <li>
+              <label class="label_title">密码：</label>
+              <div class="inputbox">
+                <input type="password" name="password" id="password" data-defultmsg="6-20个字母、数字或者符号" data-type="password" id="js_passbox" data-errormsg="密码建议由字母或数字组成，最小6位，最大20位" class="normalText display_u js_text_input pw">
+				<label id="passwordLabel" style="display:none"></label>
+              </div>
+            </li>
+          </ul>
+          <div class="subbox">
+          	<a href="#" id="submit" class="submit">登录</a>
+          </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+		$('#submit').on('click',function(){
+			alert("系统正在维护中，请稍后登录！");
+			window.location.href="http://lpsh.com.cn/";
+		});
+});
+</script>
+</body>
+</html>

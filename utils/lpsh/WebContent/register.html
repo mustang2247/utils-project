@@ -1,0 +1,95 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>注册</title>
+<link type="text/css" rel="stylesheet" href="css/common.css"/>
+<link type="text/css" rel="stylesheet" href="css/hule.css"/>
+<style type="text/css">
+#codeShow {
+	font-family: Arial;
+	font-style: italic;
+	font-weight: bold;
+	border: 0;
+	letter-spacing: 2px;
+	color: blue;
+}
+</style>
+</head>
+<body>
+<div id="body" class="container"> 
+    <div class="registerbox">
+      <div class="reg_hd"> <a href="index.html" title=""><h2>互乐时空通行证</h2></a> </div>
+      <div class="reg_bd formbox">
+        <form class="formelem" data-action="/registermg/postform">
+          <h3>账号注册</h3>
+          <ul>
+            <li>
+              <label class="label_title">用户名：</label>
+              <div class="inputbox">
+                <input type="text" name="username" id="username" data-type="username" data-errormsg="请填写正确的账号" data-defultmsg="仅支持账号注册" data-ajaxurl="/registermg/mobilemail" class="normalText display_u js_text_input phone">
+				<label id="usernameLabel" style="display:none"></label>
+                <input type="hidden" name="register_type">
+              </div>
+            </li>
+            <li>
+              <label class="label_title">密码：</label>
+              <div class="inputbox">
+                <input type="password" name="password" id="password" data-defultmsg="6-20个字母、数字或者符号" data-type="password" id="js_passbox" data-errormsg="密码建议由字母或数字组成，最小6位，最大20位" class="normalText display_u js_text_input pw">
+				<label id="passwordLabel" style="display:none"></label>
+              </div>
+            </li>
+            <li>
+              <label class="label_title" for="">确认密码：</label>
+              <div class="inputbox">
+                <input type="password" name="password2" id="password2" data-type="repass" data-rebox="js_passbox" data-errormsg="2次输入的密码不一致" class="normalText display_u js_text_input pw2">
+				<label id="password2Label" style="display:none"></label>
+              </div>
+            </li>
+			<li>
+              <label class="label_title">真实姓名：</label>
+              <div class="inputbox">
+                <input type="text" name="realname" id="realname" data-type="username" data-errormsg="姓名不符合规范" data-defultmsg="仅支持中文" data-ajaxurl="/registermg/ajaxcheck" class="normalText display_u js_text_input uname ">
+				<label id="realnameLabel" style="display:none"></label>
+              </div>
+            </li>
+			<li>
+              <label class="label_title">身份证号码：</label>
+              <div class="inputbox">
+                <input type="text" name="card" id="card" data-type="username" data-errormsg="身份证号不符合规范" data-defultmsg="支持中文、数字、字母，不能以数字开头，5-20个字符，中文算两个字符" data-ajaxurl="/registermg/ajaxcheck" class="normalText display_u js_text_input card ">
+				<label id="cardLabel" style="display:none"></label>
+              </div>
+            </li>
+			<li>
+              <label class="label_title">手机号：</label>
+              <div class="inputbox">
+                <input type="text" name="mobile" id="mobile" data-type="username" data-errormsg="手机号不符合规范" data-defultmsg="仅支持数字" class="normalText display_u js_text_input uname ">
+				<label id="mobileLabel" style="display:none"></label>
+              </div>
+            </li>
+            <li>
+              <label class="label_title">验证码：</label>
+              <div class="inputbox">
+              	<input type="text" name="code" id="code"  class="normalText"/>
+                <input type="text" name="codeShow" id="codeShow" class="normalText" readonly="readonly"/>
+				<label id="codeLabel" style="display:none"></label>
+              </div>
+            </li>
+            <li class="checkbox">
+              <input type="checkbox" name="register_agreement" id="agreement" checked="">
+              <label for="agreement">我已看过并同意<a href="xieyi.html" target="_blank"><u>《互乐时空网络游戏服务格式化协议》</u></a></label>
+            </li>
+          </ul>
+          <div class="subbox">
+          	<a href="#" class="submit">注册</a>
+          </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+    <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="js/site.js"></script>
+</body>
+</html>

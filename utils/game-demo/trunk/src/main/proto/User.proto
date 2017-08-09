@@ -1,0 +1,9 @@
+package User;
+
+option java_package = "com.hoolai.ccgames.gamedemo.protocol";
+option java_outer_classname = "User";
+
+message MessageUserId {
+
+	optional int64 user_id = 1;
+}

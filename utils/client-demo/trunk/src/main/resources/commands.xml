@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<commands>
+	<command>
+		<kindID>1</kindID>
+		<remoteObject>com.hoolai.ccgames.gamedemo.protocol.MessageUserId</remoteObject>
+		<service>com.hoolai.ccgames.clientdemo.service.LoginService</service>
+		<method>login</method>
+		<domain>DEFAULT</domain>
+	</command>
+	
+	<command>
+		<kindID>2</kindID>
+		<remoteObject>com.hoolai.ccgames.gamedemo.protocol.User$MessageUserId</remoteObject>
+		<service>com.hoolai.ccgames.clientdemo.service.LoginService</service>
+		<method>login2</method>
+		<domain>DEFAULT</domain>
+	</command>
+</commands>

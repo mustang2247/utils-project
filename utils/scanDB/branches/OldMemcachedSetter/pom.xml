@@ -1,0 +1,132 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+  http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.hoolai.ccgames</groupId>
+	<artifactId>scandb</artifactId>
+	<version>4.0.0</version>
+	<packaging>jar</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jdk.version>1.8</jdk.version>
+	</properties>
+
+	<build>
+		<finalName>Setter</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>1.7.1</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>com.hoolai.ccgames.scandb.starter.Starter</mainClass>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+
+		<resources>
+			<resource>
+				<directory>${project.basedir}/src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+	</build>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>net.spy</groupId>
+			<artifactId>spymemcached</artifactId>
+			<version>2.12.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.hoolai.ccgames</groupId>
+			<artifactId>skeleton</artifactId>
+			<version>[1.0.0,2.0.0)</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.hoolai.ccgames</groupId>
+			<artifactId>center-gate-client</artifactId>
+			<version>0.0.8-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.hoolai</groupId>
+			<artifactId>memcached</artifactId>
+			<version>2.6.1-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-pool</groupId>
+			<artifactId>commons-pool</artifactId>
+			<version>1.6</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.hoolai.centersdk</groupId>
+			<artifactId>center-sdk</artifactId>
+			<version>0.0.4-SNAPSHOT</version>
+		</dependency>
+		
+	</dependencies>
+
+	<profiles>
+
+		<profile>
+			<id>hoolaitest</id>
+			<properties>
+				<envdir>hoolaitest/</envdir>
+				<log4j.level>DEBUG</log4j.level>
+				<log4j.appender>dailyLog</log4j.appender>
+				<log.dir>/logs/scandb</log.dir>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>tencent</id>
+			<properties>
+				<envdir>tencent/</envdir>
+				<log4j.level>DEBUG</log4j.level>
+				<log4j.appender>dailyLog</log4j.appender>
+				<log.dir>/logs/scandb</log.dir>
+			</properties>
+		</profile>
+	</profiles>
+
+</project>

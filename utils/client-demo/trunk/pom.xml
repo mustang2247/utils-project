@@ -1,0 +1,127 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.hoolai.ccgames</groupId>
+	<artifactId>client-demo</artifactId>
+	<version>0.0.1</version>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>1.7.1</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+						<configuration>
+							<transformers>
+								<transformer
+									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+									<mainClass>com.hoolai.ccgames.clientdemo.starter.Starter</mainClass>
+								</transformer>
+							</transformers>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		
+		<resources>
+			<resource>
+				<directory>${project.basedir}/src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+	</build>
+	
+	<dependencies>
+	
+		<dependency>
+			<groupId>com.hoolai.ccgames</groupId>
+			<artifactId>skeleton</artifactId>
+			<version>0.0.6-SNAPSHOT</version>
+		</dependency>
+		
+	</dependencies>
+	
+	<profiles>
+		<profile>
+			<id>local</id>
+			<activation>
+				<property>
+					<name>env</name>
+					<value>local</value>
+				</property>
+			</activation>
+			<properties>
+				<envdir>local/</envdir>
+				<log4j.level>DEBUG</log4j.level>
+				<log4j.appender>stdout</log4j.appender>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>testserver</id>
+			<activation>
+				<property>
+					<name>env</name>
+					<value>testserver</value>
+				</property>
+			</activation>
+			<properties>
+				<envdir>testserver/</envdir>
+				<log4j.level>DEBUG</log4j.level>
+				<log4j.appender>dailyLog</log4j.appender>
+				<log.dir>/home/guanxin/logs/clientdemo</log.dir>
+			</properties>
+		</profile>
+		
+		<profile>
+			<id>tencent</id>
+			<activation>
+				<property>
+					<name>env</name>
+					<value>tencent</value>
+				</property>
+			</activation>
+			<properties>
+				<envdir>tencent/</envdir>
+				<log4j.level>INFO</log4j.level>
+				<log4j.appender>dailyLog</log4j.appender>
+				<log.dir>/logs/clientdemo</log.dir>
+			</properties>
+		</profile>
+		<profile>
+			<id>tencenttest</id>
+			<activation>
+				<property>
+					<name>env</name>
+					<value>tencenttest</value>
+				</property>
+			</activation>
+			<properties>
+				<envdir>tencenttest/</envdir>
+				<log4j.level>INFO</log4j.level>
+				<log4j.appender>dailyLog</log4j.appender>
+				<log.dir>/logs/clientdemo</log.dir>
+			</properties>
+		</profile>
+	</profiles>
+	
+</project>

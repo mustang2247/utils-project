@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+	        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+	        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
+	        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+	<context:annotation-config />
+	<context:component-scan base-package="com.hoolai.texaspoker.*"></context:component-scan>
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+		scope="singleton">
+		<property name="locations">
+			<list>
+				<value>classpath:dao_config.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="staticMethod">
+			<value>com.hoolai.texaspoker.config.GlobalConfig.init</value>
+		</property>
+		<property name="arguments">
+			<list>
+				<value>dao_config.properties</value>
+				<value>bi.properties</value>
+				<value>${dir.name}</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="jedisPool" class="com.hoolai.texaspoker.scandb.JedisPool"
+		scope="singleton">
+		<constructor-arg value="${nosql.url}" />
+	</bean>
+	
+	<bean id="memPool" class="com.hoolai.texaspoker.scandb.ExtendedMemcachedClientImpl"
+		scope="singleton">
+		<constructor-arg value="memPool" />
+		<constructor-arg value="${nosql.url}" />
+	</bean>
+</beans>

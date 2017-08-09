@@ -1,0 +1,11 @@
+package Login;
+
+option java_package = "com.hoolai.ccgames.gamedemo.protocol";
+option java_outer_classname = "Login";
+
+message MessageLogin {
+
+	optional string platform = 1;
+	optional string app_id = 2;
+	optional string open_id = 3;
+}
